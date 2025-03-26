@@ -36,14 +36,13 @@ def get_youtube_videos(channel_url):
 
 def get_youtube_videos_v2(channel_url):
     ydl_opts = {
-        'quiet': True,  # Prevent unnecessary output
-        'extract_flat': True,  # Extract only video URLs without downloading them
-        'force_generic_extractor': True,  # Ensures use of generic extractor for YouTube
+        'quiet': True,
+        'extract_flat': True,
+        'force_generic_extractor': True,
     }
     
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         result = ydl.extract_info(channel_url, download=False)
-        
         if 'entries' in result:
             videos = []
             for entry in result['entries']:
@@ -52,7 +51,7 @@ def get_youtube_videos_v2(channel_url):
                     'url': entry.get('url', '')
                 }
                 videos.append(video_data)
-            return json.dumps(videos, indent=4)  # Return the list as a JSON string
+            return json.dumps(videos, indent=4)
         else:
             return json.dumps({"error": "Failed to retrieve videos from this URL."}, indent=4)
 
