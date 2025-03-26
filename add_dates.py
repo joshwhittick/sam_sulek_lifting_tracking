@@ -4,10 +4,15 @@ from tqdm import tqdm
 
 with open('main_data.json', 'r') as infile:
     video_data = json.load(infile)
-
+    ydl_opts = {
+            'quiet': True,
+            'skip_download': True,
+            'no_warnings': True,
+            'cachedir': False,       # Disable cache
+        }
 def get_upload_date(url):
     """Fetches the upload date of a YouTube video using yt_dlp."""
-    with yt_dlp.YoutubeDL({'quiet': True}) as ydl:
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         result = ydl.extract_info(url, download=False)
         return result.get('upload_date', 'Unknown')
 
