@@ -64,6 +64,10 @@ for day in data:
         #print(f"{title}")
         x = 0
 
+event_set = set()
+day_set = set()
+lift_set = set()
+
 for day in new_data:
     event = day['event']
     event = event.replace('  ', ' ')
@@ -74,23 +78,35 @@ for day in new_data:
     lift = lifts_data.get(lift, lift)
     day['lift'] = lift
 
-event_set = set()
-day_set = set()
-lift_set = set()
-
-for day in new_data:
     event_set.add(day['event'])
     day_set.add(day['day'])
     lift_set.add(day['lift'])
 
-"""print('\n')
-print(list(event_set))
-print(len(event_set))"""
+event_lengths = {}
+for event in event_set:
+    highest_val = 0
+    for x in new_data:
+        if x['event'] == event:
+            day_val = x['day']
+            day_val = int(day_val)
+            if day_val > highest_val:
+                highest_val = day_val
+    event_lengths[event] = highest_val
 
-#sort alphabetically
+print(json.dumps(event_lengths, indent=4))
+
+lift_ocurences = {}
+for lift in lift_set:
+    count = 0
+    for x in new_data:
+        if x['lift'] == lift:
+            count += 1
+    lift_ocurences[lift] = count
+
+lift_ocurences = dict(sorted(lift_ocurences.items(), key=lambda item: item[1], reverse=True))
+
+print(json.dumps(lift_ocurences, indent=4))
+
 event_set = sorted(event_set)
 day_set = sorted(day_set)   
 lift_set = sorted(lift_set)
-
-for x in lift_set:
-    print(x)
