@@ -1,112 +1,120 @@
 import json
 import re
 
-file = open('main_data.json', 'r')
-data = json.load(file)
-file.close()
+def clean_and_enrich_json(json_dict):
+    new_data = []
+    regex_1 = r"^(.+?) Day (\d+) - (.+) (?=-)- (.+)"
+    regex_2 = r"^(.+?) [dD]ay (\d+)(?: Part \d)? - ([a-zA-Z \.\,\/]+)"
 
-lifts_file = open('lift_types.json', 'r')
-lifts_data = json.load(lifts_file)
-lifts_file.close()
+    lifts_data = json.load(open('lift_types.json', 'r'))
+    phase_dict = {
+        'Winter Bulk': 'Winter Bulk',
+        'Fall Cut': 'Fall Cut',
+        'Spring Cut': 'Spring Cut',
+        'Spring Cut Finale': 'Spring Cut',
+        'End of Fall Cut': 'Fall Cut',
+        'The Bulk': 'The Bulk',
+        'Offseason': 'Offseason',
+        'Winter Shredathon (Name TBD)': 'Winter Shredathon',
+        'Winter Shredathon': 'Winter Shredathon',
+        'Clothing Announcement - Winter Shredathon': 'Winter Shredathon',
+        'Spring Bulk': 'Spring Bulk'
+    }
 
-regex_1 = r"^(.+?) Day (\d+) - (.+) (?=-)- (.+)"
-regex_2 = r"^(.+?) [dD]ay (\d+)(?: Part \d)? - ([a-zA-Z \.\,\/]+)"
+    for day in json_dict:
+        title = day['title']
+        title = title.strip()
+        title = title.replace('  ', ' ')
+        title = title.replace('Arms, ', 'Arms - ')
+        title = title.replace('WI', 'Wi')
+        day['title'] = title
 
-new_data = []
+        match_1 = re.match(regex_1, title)
+        match_2 = re.match(regex_2, title)
 
-phase_dict = {
-    'Winter Bulk': 'Winter Bulk',
-    'Fall Cut': 'Fall Cut',
-    'Spring Cut': 'Spring Cut',
-    'Spring Cut Finale': 'Spring Cut',
-    'End of Fall Cut': 'Fall Cut',
-    'The Bulk': 'The Bulk',
-    'Offseason': 'Offseason',
-    'Winter Shredathon (Name TBD)': 'Winter Shredathon',
-    'Winter Shredathon': 'Winter Shredathon',
-    'Clothing Announcement - Winter Shredathon': 'Winter Shredathon',
-    'Spring Bulk': 'Spring Bulk'
-}
+        if match_1:
+            event = match_2.group(1).strip()
+            day_number = match_2.group(2).strip()
+            lift = match_2.group(3).strip()
 
-for day in data:
-    title = day['title']
-    title = title.strip()
-    title = title.replace('  ', ' ')
-    title = title.replace('Arms, ', 'Arms - ')
-    title = title.replace('WI', 'Wi')
-    day['title'] = title
+        elif match_2:
+            event = match_2.group(1).strip()
+            day_number = match_2.group(2).strip()
+            lift = match_2.group(3).strip()
+        
+        if match_1 or match_2:
 
-for day in data:
-    title = day['title']
-    match_1 = re.match(regex_1, title)
-    match_2 = re.match(regex_2, title)
+            event = event.replace('  ', ' ')
+            event = phase_dict.get(event, event)
 
-    if match_1:
-        event = match_2.group(1).strip()
-        day_number = match_2.group(2).strip()
-        lift = match_2.group(3).strip()
+            lift = lifts_data.get(lift, lift)
 
-    elif match_2:
-        event = match_2.group(1).strip()
-        day_number = match_2.group(2).strip()
-        lift = match_2.group(3).strip()
-    
-    if match_1 or match_2:
-        new_data.append({
-            'title': day['title'],
-            'vide_url': day['url'],
-            'event': event.strip(),
-            'day': day_number.strip(),
-            'lift': lift.strip()
-        })
-    
-    else:
-        #print(f"{title}")
-        x = 0
+            new_data.append({
+                'title': day['title'],
+                'video_url': day['video_url'],
+                'upload_date': day['upload_date'],
+                'event': event.strip(),
+                'day': day_number.strip(),
+                'lift': lift.strip()
+            })
+        
+        else:
+            new_data.append({
+                'title': day['title'],
+                'video_url': day['video_url'],
+                'upload_date': day['upload_date'],
+                'event': 'None',
+                'day': 'None',
+                'lift': 'None'
+            }) 
 
-event_set = set()
-day_set = set()
-lift_set = set()
+    return new_data
 
-for day in new_data:
-    event = day['event']
-    event = event.replace('  ', ' ')
-    event = phase_dict.get(event, event)
-    day['event'] = event
+data = json.load(open('video_data_final.json', 'r'))
+new_data = clean_and_enrich_json(data)
 
-    lift = day['lift']
-    lift = lifts_data.get(lift, lift)
-    day['lift'] = lift
+print(json.dumps(new_data, indent=4))
 
-    event_set.add(day['event'])
-    day_set.add(day['day'])
-    lift_set.add(day['lift'])
 
-event_lengths = {}
-for event in event_set:
-    highest_val = 0
-    for x in new_data:
-        if x['event'] == event:
-            day_val = x['day']
-            day_val = int(day_val)
-            if day_val > highest_val:
-                highest_val = day_val
-    event_lengths[event] = highest_val
+def get_current_stats(new_data):
+    event_set = set()
+    day_set = set()
+    lift_set = set()
 
-print(json.dumps(event_lengths, indent=4))
+    for day in new_data:
+        if day['day'] != 'None':
+            day_set.add(day['day'])
+        if day['event'] != 'None':
+            event_set.add(day['event'])
+        if day['lift'] != 'None':
+            lift_set.add(day['lift'])
 
-lift_ocurences = {}
-for lift in lift_set:
-    count = 0
-    for x in new_data:
-        if x['lift'] == lift:
-            count += 1
-    lift_ocurences[lift] = count
+    event_set = sorted(event_set)
+    day_set = sorted(day_set)   
+    lift_set = sorted(lift_set)
 
-lift_ocurences = dict(sorted(lift_ocurences.items(), key=lambda item: item[1], reverse=True))
+    event_lengths = {}
+    for event in event_set:
+        highest_val = 0
+        for x in new_data:
+            if x['event'] == event:
+                day_val = x['day']
+                if day_val == 'None':
+                    continue
+                day_val = int(day_val)
+                if day_val > highest_val:
+                    highest_val = day_val
+        event_lengths[event] = highest_val
 
-print(json.dumps(lift_ocurences, indent=4))
+    lift_ocurences = {}
+    for lift in lift_set:
+        count = 0
+        for x in new_data:
+            if x['lift'] == lift:
+                count += 1
+        lift_ocurences[lift] = count
 
-event_set = sorted(event_set)
-day_set = sorted(day_set)   
-lift_set = sorted(lift_set)
+    lift_ocurences = dict(sorted(lift_ocurences.items(), key=lambda item: item[1], reverse=True))
+    event_lengths = dict(sorted(event_lengths.items(), key=lambda item: item[1], reverse=True))
+
+    return event_set, day_set, lift_set, event_lengths, lift_ocurences
