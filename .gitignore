@@ -3,6 +3,7 @@ __pycache__
 *.json
 
 !video_data_final.json
+!lift_types.json
 
 OLD_SCRIPTS/
 OLD_JSON/
