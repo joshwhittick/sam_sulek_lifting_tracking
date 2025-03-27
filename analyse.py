@@ -73,7 +73,7 @@ def clean_and_enrich_json(json_dict):
 data = json.load(open('video_data_final.json', 'r'))
 new_data = clean_and_enrich_json(data)
 
-print(json.dumps(new_data, indent=4))
+#print(json.dumps(new_data, indent=4))
 
 
 def get_current_stats(new_data):
