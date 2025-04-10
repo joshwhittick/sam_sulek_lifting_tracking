@@ -27,6 +27,8 @@ if st.button("Get Most Recent Data"):
 
     res_new = clean_and_enrich_json(res_new)
 
+    res_new = res_new[::-1]
+
     for x in res_new:
         data.insert(0, x)
 
