@@ -41,7 +41,7 @@ if st.button("Get Most Recent Data"):
     st.write("Data is now up to date.")
 
 if st.button("Analyse"):
-    event_set, day_set, lift_set, event_lengths, lift_ocurences = get_current_stats(data)
+    event_set, day_set, lift_set, event_lengths, lift_ocurences, event_start_end = get_current_stats(data)
     st.subheader("Frequency of Each Lift:")
 
     total_sessions = sum(lift_ocurences.values())
@@ -76,5 +76,9 @@ if st.button("Analyse"):
         col2.write(c)   
 
     st.subheader('Event Durations:')
-    for k, v in event_lengths.items():
-        st.write(f"{k}: {v} days")
+    for event, length in event_lengths.items():
+        start, end = event_start_end.get(event, (None, None))
+        if start and end:
+            st.write(f"{event}: {length} days ({start.strftime('%d-%m-%Y')} to {end.strftime('%d-%m-%Y')})")
+        else:
+            st.write(f"{event}: {length} days")

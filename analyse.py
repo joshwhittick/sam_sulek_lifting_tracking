@@ -1,5 +1,6 @@
 import json
 import re
+from datetime import datetime
 
 def clean_and_enrich_json(json_dict):
     new_data = []
@@ -73,13 +74,12 @@ def clean_and_enrich_json(json_dict):
 data = json.load(open('video_data_final.json', 'r'))
 new_data = clean_and_enrich_json(data)
 
-#print(json.dumps(new_data, indent=4))
-
-
 def get_current_stats(new_data):
     event_set = set()
     day_set = set()
     lift_set = set()
+
+    event_dates = {}
 
     for day in new_data:
         if day['day'] != 'None':
@@ -89,22 +89,39 @@ def get_current_stats(new_data):
         if day['lift'] != 'None':
             lift_set.add(day['lift'])
 
+        if day['event'] != 'None':
+            date_str = day['upload_date']
+            try:
+                date = datetime.strptime(date_str, '%d-%m-%Y')
+            except ValueError:
+                continue
+
+            if day['event'] not in event_dates:
+                event_dates[day['event']] = []
+            event_dates[day['event']].append(date)
+
     event_set = sorted(event_set)
-    day_set = sorted(day_set)   
+    day_set = sorted(day_set)
     lift_set = sorted(lift_set)
 
     event_lengths = {}
+    event_start_end = {}
+
     for event in event_set:
         highest_val = 0
         for x in new_data:
-            if x['event'] == event:
-                day_val = x['day']
-                if day_val == 'None':
+            if x['event'] == event and x['day'] != 'None':
+                try:
+                    day_val = int(x['day'])
+                    if day_val > highest_val:
+                        highest_val = day_val
+                except ValueError:
                     continue
-                day_val = int(day_val)
-                if day_val > highest_val:
-                    highest_val = day_val
         event_lengths[event] = highest_val
+
+        if event in event_dates:
+            sorted_dates = sorted(event_dates[event])
+            event_start_end[event] = (sorted_dates[0], sorted_dates[-1])
 
     lift_ocurences = {}
     for lift in lift_set:
@@ -117,4 +134,6 @@ def get_current_stats(new_data):
     lift_ocurences = dict(sorted(lift_ocurences.items(), key=lambda item: item[1], reverse=True))
     event_lengths = dict(sorted(event_lengths.items(), key=lambda item: item[1], reverse=True))
 
-    return event_set, day_set, lift_set, event_lengths, lift_ocurences
+
+
+    return event_set, day_set, lift_set, event_lengths, lift_ocurences, event_start_end

@@ -1,5 +1,101 @@
 [
     {
+        "title": "Offseason Day 42 - Heavy Chest",
+        "video_url": "https://www.youtube.com/watch?v=5bHeUQqyLTo",
+        "upload_date": "21-04-2025",
+        "event": "Offseason",
+        "day": "42",
+        "lift": "Chest"
+    },
+    {
+        "title": "Offseason Day 41 - Heavy Easter Quads",
+        "video_url": "https://www.youtube.com/watch?v=Rqg0EYXRxOE",
+        "upload_date": "20-04-2025",
+        "event": "Offseason",
+        "day": "41",
+        "lift": "Quads"
+    },
+    {
+        "title": "Offseason Day 40 - Supersetted Arm Day",
+        "video_url": "https://www.youtube.com/watch?v=76ClHgUfL-4",
+        "upload_date": "19-04-2025",
+        "event": "Offseason",
+        "day": "40",
+        "lift": "Arm"
+    },
+    {
+        "title": "Offseason Day 39 - Back",
+        "video_url": "https://www.youtube.com/watch?v=nc_VHz3--iE",
+        "upload_date": "18-04-2025",
+        "event": "Offseason",
+        "day": "39",
+        "lift": "Back"
+    },
+    {
+        "title": "Offseason Day 38 - When to Cut or Bulk",
+        "video_url": "https://www.youtube.com/watch?v=_qKTldKF6G4",
+        "upload_date": "18-04-2025",
+        "event": "Offseason",
+        "day": "38",
+        "lift": "None"
+    },
+    {
+        "title": "Offseason Day 37 - Chest With Mark",
+        "video_url": "https://www.youtube.com/watch?v=IemVfvienZ0",
+        "upload_date": "17-04-2025",
+        "event": "Offseason",
+        "day": "37",
+        "lift": "Chest"
+    },
+    {
+        "title": "Offseason Day 36 - Hams",
+        "video_url": "https://www.youtube.com/watch?v=JmNXrmBcIYU",
+        "upload_date": "16-04-2025",
+        "event": "Offseason",
+        "day": "36",
+        "lift": "Hamstrings"
+    },
+    {
+        "title": "Offseason Day 35 - Arms",
+        "video_url": "https://www.youtube.com/watch?v=u6buffoC7AI",
+        "upload_date": "15-04-2025",
+        "event": "Offseason",
+        "day": "35",
+        "lift": "Arms"
+    },
+    {
+        "title": "Offseason Day 34 - Back - Lat Focused Lift",
+        "video_url": "https://www.youtube.com/watch?v=1ZRs82w6HXE",
+        "upload_date": "14-04-2025",
+        "event": "Offseason",
+        "day": "34",
+        "lift": "Back"
+    },
+    {
+        "title": "Offseason Day 33 - Chest",
+        "video_url": "https://www.youtube.com/watch?v=9X2buoP6jzg",
+        "upload_date": "13-04-2025",
+        "event": "Offseason",
+        "day": "33",
+        "lift": "Chest"
+    },
+    {
+        "title": "Offseason Day 32 - Quads with the Dog",
+        "video_url": "https://www.youtube.com/watch?v=w8La2xwKsgE",
+        "upload_date": "11-04-2025",
+        "event": "Offseason",
+        "day": "32",
+        "lift": "Quads"
+    },
+    {
+        "title": "Offseason Day 31 - Arms",
+        "video_url": "https://www.youtube.com/watch?v=MbqSLE5fReg",
+        "upload_date": "10-04-2025",
+        "event": "Offseason",
+        "day": "31",
+        "lift": "Arms"
+    },
+    {
         "title": "Offseason Day 30 - Back - Sometimes More is More",
         "video_url": "https://www.youtube.com/watch?v=StKa9B1nISo",
         "upload_date": "09-04-2025",
@@ -53,7 +149,7 @@
         "upload_date": "03-04-2025",
         "event": "None",
         "day": "None",
-        "lift": "None"
+        "lift": "Chest"
     },
     {
         "title": "Private Gym Tour",
@@ -69,7 +165,7 @@
         "upload_date": "02-04-2025",
         "event": "Offseason",
         "day": "23",
-        "lift": "Hamstrings Adductors and Calves"
+        "lift": "Hamstrings, Adductors and Calves"
     },
     {
         "title": "Offseason Day 22 - Arms - Simple Lift",
@@ -469,7 +565,7 @@
         "upload_date": "11-02-2025",
         "event": "None",
         "day": "None",
-        "lift": "None"
+        "lift": "Chest"
     },
     {
         "title": "Winter Shredathon Day 125 - SuperBowlder Shoulders",
