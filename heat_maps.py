@@ -13,11 +13,12 @@ def plot_calendars(data):
     df_expanded = df[df['lift'] != 'None'].copy()
     df_expanded['lift'] = df_expanded['lift'].str.split(';')
     df_expanded = df_expanded.explode('lift')
+    #st.write(df_expanded)
 
     # Get unique lift types
     unique_lifts = sorted(df_expanded['lift'].unique().tolist())
 
-    lifts = []
+    lifts = {}
 
     for lift in unique_lifts:
         lift_df = df_expanded[df_expanded['lift'] == lift]
@@ -25,7 +26,6 @@ def plot_calendars(data):
 
         daily_counts['upload_date'] = pd.to_datetime(daily_counts['upload_date'], format='%d-%m-%Y', errors='coerce')
         daily_counts = daily_counts.dropna(subset=['upload_date'])  # Optional: clean up bad dates
-
 
         if daily_counts.empty:
             continue
@@ -35,6 +35,8 @@ def plot_calendars(data):
 
         pivot = daily_counts.pivot_table(index='dow', columns='week', values='count')
 
+        total_sessions = daily_counts['count'].sum()
+
         plt.figure(figsize=(15, 6))
         sns.heatmap(pivot, cmap="Greens", linewidths=0.5)
         plt.title(f"{lift} Sessions Heatmap")
@@ -42,9 +44,17 @@ def plot_calendars(data):
         plt.xlabel('ISO Week Number')
         plt.yticks(ticks=[0, 1, 2, 3, 4, 5, 6], labels=['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], rotation=0)
         plt.tight_layout()
-        lifts.append(plt.gcf())
+        lifts[lift] = {
+            'fig': plt.gcf(),
+            'total_sessions': total_sessions,
+        }
     
-    for fig in lifts:
+    # Sort lifts by total sessions
+    lifts = sorted(lifts.items(), key=lambda x: x[1]['total_sessions'], reverse=True)
+
+    for lift in lifts:
+        fig = lift[1]['fig']
+        st.subheader(f"{lift[0]} - Total Sessions: {lift[1]['total_sessions']}")
         st.pyplot(fig)
 
 if __name__ == "__main__":
