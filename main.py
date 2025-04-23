@@ -92,3 +92,6 @@ if st.button("Analyse"):
             st.write(f"{event}: {length} days ({start.strftime('%d-%m-%Y')} to {end.strftime('%d-%m-%Y')})")
         else:
             st.write(f"{event}: {length} days")
+    
+    st.subheader("Lifting Calendar Plots:")
+    plot_calendars(data)
