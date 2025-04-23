@@ -49,6 +49,14 @@ def clean_and_enrich_json(json_dict):
             event = phase_dict.get(event, event)
 
             lift = lifts_data.get(lift, lift)
+            lift = lift.replace(' and ', ';')
+            lift = lift.replace(',', ';')
+            lift = lift.replace('; ', ';')
+            lift = lift.replace(' ;', ';')
+
+            lifts = lift.split(';')
+            lifts = sorted(lifts, key=lambda x: x.strip())
+            lift = ';'.join(lifts)
 
             new_data.append({
                 'title': day['title'],
@@ -71,13 +79,11 @@ def clean_and_enrich_json(json_dict):
 
     return new_data
 
-data = json.load(open('video_data_final.json', 'r'))
-new_data = clean_and_enrich_json(data)
-
 def get_current_stats(new_data):
     event_set = set()
     day_set = set()
     lift_set = set()
+    overall_lift_set = set()
 
     event_dates = {}
 
@@ -88,6 +94,9 @@ def get_current_stats(new_data):
             event_set.add(day['event'])
         if day['lift'] != 'None':
             lift_set.add(day['lift'])
+            lifts = day['lift'].split(';')
+            for lift in lifts:
+                overall_lift_set.add(lift.strip())
 
         if day['event'] != 'None':
             date_str = day['upload_date']
@@ -99,6 +108,18 @@ def get_current_stats(new_data):
             if day['event'] not in event_dates:
                 event_dates[day['event']] = []
             event_dates[day['event']].append(date)
+
+    # Sort alphabetically
+    overall_lift_set = sorted(overall_lift_set)
+
+    overall_lift_ocurences = {}
+    for lift in overall_lift_set:
+        count = 0
+        for x in new_data:
+            if lift in x['lift']:
+                count += 1
+        overall_lift_ocurences[lift] = count
+
 
     event_set = sorted(event_set)
     day_set = sorted(day_set)
@@ -136,4 +157,4 @@ def get_current_stats(new_data):
 
 
 
-    return event_set, day_set, lift_set, event_lengths, lift_ocurences, event_start_end
+    return event_set, day_set, lift_set, event_lengths, lift_ocurences, event_start_end, overall_lift_ocurences

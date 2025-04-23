@@ -1,5 +1,13 @@
 [
     {
+        "title": "Offseason Day 43 - Back",
+        "video_url": "https://www.youtube.com/watch?v=cU6fhC6TY4I",
+        "upload_date": "22-04-2025",
+        "event": "Offseason",
+        "day": "43",
+        "lift": "Back"
+    },
+    {
         "title": "Offseason Day 42 - Heavy Chest",
         "video_url": "https://www.youtube.com/watch?v=5bHeUQqyLTo",
         "upload_date": "21-04-2025",
@@ -21,7 +29,7 @@
         "upload_date": "19-04-2025",
         "event": "Offseason",
         "day": "40",
-        "lift": "Arm"
+        "lift": "Arms"
     },
     {
         "title": "Offseason Day 39 - Back",
@@ -165,7 +173,7 @@
         "upload_date": "02-04-2025",
         "event": "Offseason",
         "day": "23",
-        "lift": "Hamstrings, Adductors and Calves"
+        "lift": "Adductors;Calves;Hamstrings"
     },
     {
         "title": "Offseason Day 22 - Arms - Simple Lift",
@@ -373,7 +381,7 @@
         "upload_date": "07-03-2025",
         "event": "None",
         "day": "None",
-        "lift": "Side and Rear Delts"
+        "lift": "Rear Delts;Side Delts"
     },
     {
         "title": "Heavy Legs Starts Now",
@@ -413,7 +421,7 @@
         "upload_date": "03-03-2025",
         "event": "None",
         "day": "None",
-        "lift": "Arm"
+        "lift": "Arms"
     },
     {
         "title": "Arnold Weekend Saturday",
@@ -509,7 +517,7 @@
         "upload_date": "18-02-2025",
         "event": "None",
         "day": "None",
-        "lift": "Arm"
+        "lift": "Arms"
     },
     {
         "title": "11 Days Out Arnold Amateur - Back Home For Cardio",
@@ -1013,7 +1021,7 @@
         "upload_date": "18-12-2024",
         "event": "Winter Shredathon",
         "day": "72",
-        "lift": "Arms and Cardio"
+        "lift": "Arms;Cardio"
     },
     {
         "title": "Winter Shredathon Day 71 - Back - Officially Veiny",
@@ -1645,7 +1653,7 @@
         "upload_date": "04-10-2024",
         "event": "The Bulk",
         "day": "108",
-        "lift": "Forearms and Calves"
+        "lift": "Calves;Forearms"
     },
     {
         "title": "The Bulk Day 107 - Arms - Pump Addiction",
@@ -1997,7 +2005,7 @@
         "upload_date": "20-08-2024",
         "event": "The Bulk",
         "day": "64",
-        "lift": "Forearms and Calves"
+        "lift": "Calves;Forearms"
     },
     {
         "title": "The Bulk Day 63 - Cardio And Bulking Tips",
@@ -2037,7 +2045,7 @@
         "upload_date": "15-08-2024",
         "event": "The Bulk",
         "day": "59",
-        "lift": "Calves and Forearms"
+        "lift": "Calves;Forearms"
     },
     {
         "title": "The Bulk Day 58 - Chest - Drinking Is Bad For Gains",
@@ -2141,7 +2149,7 @@
         "upload_date": "02-08-2024",
         "event": "The Bulk",
         "day": "46",
-        "lift": "Forearms and Calves"
+        "lift": "Calves;Forearms"
     },
     {
         "title": "The Bulk Day 45 - Chest - Lift, and Gains Shall Cometh",
@@ -2173,7 +2181,7 @@
         "upload_date": "29-07-2024",
         "event": "The Bulk",
         "day": "42",
-        "lift": "Side Delts and Forearms"
+        "lift": "Forearms;Side Delts"
     },
     {
         "title": "The Bulk Day 41 - Chest - Intensity Above All + Fish Talk",
@@ -2237,7 +2245,7 @@
         "upload_date": "21-07-2024",
         "event": "The Bulk",
         "day": "34",
-        "lift": "Forearms and Shoulders"
+        "lift": "Forearms;Shoulders"
     },
     {
         "title": "The Bulk Day 33 - Chest",
@@ -2269,7 +2277,7 @@
         "upload_date": "17-07-2024",
         "event": "The Bulk",
         "day": "30",
-        "lift": "Back and Forearms"
+        "lift": "Back;Forearms"
     },
     {
         "title": "The Bulk Day 29 - Chest",
@@ -2333,7 +2341,7 @@
         "upload_date": "09-07-2024",
         "event": "The Bulk",
         "day": "22",
-        "lift": "Forearms and Calves"
+        "lift": "Calves;Forearms"
     },
     {
         "title": "The Bulk Day 21 - Chest",
@@ -2429,7 +2437,7 @@
         "upload_date": "27-06-2024",
         "event": "The Bulk",
         "day": "10",
-        "lift": "Forearms and Calves"
+        "lift": "Calves;Forearms"
     },
     {
         "title": "The Bulk Day 9 - Chest",
@@ -2677,7 +2685,7 @@
         "upload_date": "29-05-2024",
         "event": "Spring Cut",
         "day": "58",
-        "lift": "Legs and Calves"
+        "lift": "Calves;Legs"
     },
     {
         "title": "Spring Cut Day 57 - Dieting Grocery Trip",
@@ -2957,7 +2965,7 @@
         "upload_date": "24-04-2024",
         "event": "Spring Cut",
         "day": "24",
-        "lift": "Back and Calves"
+        "lift": "Back;Calves"
     },
     {
         "title": "Spring Cut Day 23 - Chest",
@@ -3133,7 +3141,7 @@
         "upload_date": "02-04-2024",
         "event": "Spring Cut",
         "day": "2",
-        "lift": "Abs and Cardio"
+        "lift": "Abs;Cardio"
     },
     {
         "title": "Spring Cut Day 1 - Shoulders",
@@ -3269,7 +3277,7 @@
         "upload_date": "16-03-2024",
         "event": "Winter Bulk",
         "day": "138",
-        "lift": "Hamstrings and Calves"
+        "lift": "Calves;Hamstrings"
     },
     {
         "title": "Winter Bulk Day 137 - UK Chest",
@@ -3301,7 +3309,7 @@
         "upload_date": "11-03-2024",
         "event": "Winter Bulk",
         "day": "134",
-        "lift": "Back and Shoulders"
+        "lift": "Back;Shoulders"
     },
     {
         "title": "Winter Bulk Day 133 - Chest",
@@ -3645,7 +3653,7 @@
         "upload_date": "28-01-2024",
         "event": "Winter Bulk",
         "day": "93",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Winter Bulk Day 92 - Legs",
@@ -3741,7 +3749,7 @@
         "upload_date": "17-01-2024",
         "event": "Winter Bulk",
         "day": "81",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Winter Bulk Day 80 - Quads",
@@ -3757,7 +3765,7 @@
         "upload_date": "14-01-2024",
         "event": "Winter Bulk",
         "day": "79",
-        "lift": "Hamstrings and Calves"
+        "lift": "Calves;Hamstrings"
     },
     {
         "title": "Winter Bulk Day 78 - Arms",
@@ -3821,7 +3829,7 @@
         "upload_date": "07-01-2024",
         "event": "Winter Bulk",
         "day": "71",
-        "lift": "Shoulders and Forearms"
+        "lift": "Forearms;Shoulders"
     },
     {
         "title": "Winter Bulk Day 70 - Arms",
@@ -4085,7 +4093,7 @@
         "upload_date": "05-12-2023",
         "event": "Winter Bulk",
         "day": "38",
-        "lift": "Abs and Cardio"
+        "lift": "Abs;Cardio"
     },
     {
         "title": "Winter Bulk Day 35 - Legs",
@@ -4109,7 +4117,7 @@
         "upload_date": "01-12-2023",
         "event": "Winter Bulk",
         "day": "34",
-        "lift": "Triceps and Forearms"
+        "lift": "Forearms;Triceps"
     },
     {
         "title": "Winter Bulk Day 34 - Cardio",
@@ -4229,7 +4237,7 @@
         "upload_date": "16-11-2023",
         "event": "Winter Bulk",
         "day": "20",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Winter Bulk Day 19 - Legs",
@@ -4245,7 +4253,7 @@
         "upload_date": "14-11-2023",
         "event": "Winter Bulk",
         "day": "18",
-        "lift": "Arms and Forearms"
+        "lift": "Arms;Forearms"
     },
     {
         "title": "Winter Bulk Day 17 - Back and Rear Delts",
@@ -4253,7 +4261,7 @@
         "upload_date": "13-11-2023",
         "event": "Winter Bulk",
         "day": "17",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "Winter Bulk Day 16 - Chest and Side Delts",
@@ -4261,7 +4269,7 @@
         "upload_date": "12-11-2023",
         "event": "Winter Bulk",
         "day": "16",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Winter Bulk Day 15 - Legs",
@@ -4277,7 +4285,7 @@
         "upload_date": "10-11-2023",
         "event": "Winter Bulk",
         "day": "14",
-        "lift": "Arms and Forearms"
+        "lift": "Arms;Forearms"
     },
     {
         "title": "Winter Bulk Day 13 - Back and Rear Delts",
@@ -4285,7 +4293,7 @@
         "upload_date": "09-11-2023",
         "event": "Winter Bulk",
         "day": "13",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "Winter Bulk Day 12 - Chest and Side Delts",
@@ -4293,7 +4301,7 @@
         "upload_date": "08-11-2023",
         "event": "Winter Bulk",
         "day": "12",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Winter Bulk Day 11 - Legs",
@@ -4309,7 +4317,7 @@
         "upload_date": "06-11-2023",
         "event": "Winter Bulk",
         "day": "10",
-        "lift": "Triceps and Forearms"
+        "lift": "Forearms;Triceps"
     },
     {
         "title": "Winter Bulk Day 9 - Back and Rear Delts",
@@ -4317,7 +4325,7 @@
         "upload_date": "05-11-2023",
         "event": "Winter Bulk",
         "day": "9",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "Winter Bulk Day 8 - Chest and Side Delts",
@@ -4325,7 +4333,7 @@
         "upload_date": "04-11-2023",
         "event": "Winter Bulk",
         "day": "8",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Winter Bulk Day 7 - Legs",
@@ -4349,7 +4357,7 @@
         "upload_date": "01-11-2023",
         "event": "Winter Bulk",
         "day": "5",
-        "lift": "Back, Rear Delts and Calves"
+        "lift": "Back;Calves;Rear Delts"
     },
     {
         "title": "Winter Bulk Day 4 - Chest and Side Delts",
@@ -4357,7 +4365,7 @@
         "upload_date": "31-10-2023",
         "event": "Winter Bulk",
         "day": "4",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Winter Bulk Day 3 - Legs",
@@ -4381,7 +4389,7 @@
         "upload_date": "28-10-2023",
         "event": "Winter Bulk",
         "day": "1",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "End of Fall Cut Day 59 - Chest and Side Delts",
@@ -4389,7 +4397,7 @@
         "upload_date": "27-10-2023",
         "event": "Fall Cut",
         "day": "59",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Fall Cut Day 58 - Legs and Full Day of Eating",
@@ -4405,7 +4413,7 @@
         "upload_date": "25-10-2023",
         "event": "Fall Cut",
         "day": "57",
-        "lift": "Arms, Forearms and Calves"
+        "lift": "Arms;Calves;Forearms"
     },
     {
         "title": "Fall Cut Day 56 - Back and Rear Delts",
@@ -4413,7 +4421,7 @@
         "upload_date": "24-10-2023",
         "event": "Fall Cut",
         "day": "56",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "Fall Cut Day 55 - Chest and Side Delts",
@@ -4421,7 +4429,7 @@
         "upload_date": "23-10-2023",
         "event": "Fall Cut",
         "day": "55",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Fall Cut Day 54 - Legs",
@@ -4445,7 +4453,7 @@
         "upload_date": "20-10-2023",
         "event": "Fall Cut",
         "day": "52",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "Fall Cut Day 51 - Chest and Side/Front Delts",
@@ -4453,7 +4461,7 @@
         "upload_date": "19-10-2023",
         "event": "Fall Cut",
         "day": "51",
-        "lift": "Chest and Side/Front Delts"
+        "lift": "Chest;Front Delts;Side Delts"
     },
     {
         "title": "Fall Cut Day 50 - Legs",
@@ -4477,7 +4485,7 @@
         "upload_date": "16-10-2023",
         "event": "Fall Cut",
         "day": "48",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "Fall Cut Day 47 - Chest and Side Delts",
@@ -4485,7 +4493,7 @@
         "upload_date": "15-10-2023",
         "event": "Fall Cut",
         "day": "47",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Fall Cut Day 46 - Legs",
@@ -4509,7 +4517,7 @@
         "upload_date": "12-10-2023",
         "event": "Fall Cut",
         "day": "44",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "Fall Cut Day 43 - Chest and Side Delts",
@@ -4517,7 +4525,7 @@
         "upload_date": "11-10-2023",
         "event": "Fall Cut",
         "day": "43",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Fall Cut Day 42 - Legs",
@@ -4541,7 +4549,7 @@
         "upload_date": "08-10-2023",
         "event": "Fall Cut",
         "day": "40",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "Fall Cut Day 39 - Chest and Side Delts 233.6 Lbs",
@@ -4549,7 +4557,7 @@
         "upload_date": "07-10-2023",
         "event": "Fall Cut",
         "day": "39",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Fall Cut Day 38 - Legs 234.2 Lbs",
@@ -4573,7 +4581,7 @@
         "upload_date": "04-10-2023",
         "event": "Fall Cut",
         "day": "36",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "Fall Cut Day 35 - Chest and Side Delts 235.4 Lbs",
@@ -4581,7 +4589,7 @@
         "upload_date": "03-10-2023",
         "event": "Fall Cut",
         "day": "35",
-        "lift": "Chest and Side Delts"
+        "lift": "Chest;Side Delts"
     },
     {
         "title": "Fall Cut Day 34 - Planet Fitness Cardio",
@@ -4597,7 +4605,7 @@
         "upload_date": "01-10-2023",
         "event": "Fall Cut",
         "day": "33",
-        "lift": "Arms and Calves"
+        "lift": "Arms;Calves"
     },
     {
         "title": "Fall Cut Day 32 - Back and Rear Delts",
@@ -4605,7 +4613,7 @@
         "upload_date": "30-09-2023",
         "event": "Fall Cut",
         "day": "32",
-        "lift": "Back and Rear Delts"
+        "lift": "Back;Rear Delts"
     },
     {
         "title": "Fall Cut Day 31 - Chest and Shoulders 234.5 Lbs",
@@ -4613,7 +4621,7 @@
         "upload_date": "29-09-2023",
         "event": "Fall Cut",
         "day": "31",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Fall Cut Day 30 - Legs 235.2 Lbs",
@@ -4629,7 +4637,7 @@
         "upload_date": "27-09-2023",
         "event": "Fall Cut",
         "day": "29",
-        "lift": "Arms and Calves"
+        "lift": "Arms;Calves"
     },
     {
         "title": "Fall Cut Day 28 - Back 236.2 Lbs",
@@ -4645,7 +4653,7 @@
         "upload_date": "25-09-2023",
         "event": "Fall Cut",
         "day": "27",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Fall Cut Day 26 - Legs 234.1 Lbs",
@@ -4677,7 +4685,7 @@
         "upload_date": "21-09-2023",
         "event": "Fall Cut",
         "day": "23",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Fall Cut Day 22 - Legs 232.2 Lbs",
@@ -4709,7 +4717,7 @@
         "upload_date": "17-09-2023",
         "event": "Fall Cut",
         "day": "19",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Fall Cut Day 18 - Legs ??? Lbs",
@@ -4821,7 +4829,7 @@
         "upload_date": "03-09-2023",
         "event": "Fall Cut",
         "day": "5",
-        "lift": "Legs and Cardio"
+        "lift": "Cardio;Legs"
     },
     {
         "title": "Fall Cut Day 4 - Arms",
@@ -4901,7 +4909,7 @@
         "upload_date": "24-08-2023",
         "event": "Spring Bulk",
         "day": "217",
-        "lift": "Triceps and Forearms"
+        "lift": "Forearms;Triceps"
     },
     {
         "title": "Spring Bulk Day 216 - Back and Biceps",
@@ -4909,7 +4917,7 @@
         "upload_date": "23-08-2023",
         "event": "Spring Bulk",
         "day": "216",
-        "lift": "Back and Biceps"
+        "lift": "Back;Biceps"
     },
     {
         "title": "Spring Bulk Day 215 - Chest",
@@ -4933,7 +4941,7 @@
         "upload_date": "20-08-2023",
         "event": "Spring Bulk",
         "day": "213",
-        "lift": "Triceps and Hamstrings"
+        "lift": "Hamstrings;Triceps"
     },
     {
         "title": "Spring Bulk Day 212 - Back and Biceps",
@@ -4941,7 +4949,7 @@
         "upload_date": "19-08-2023",
         "event": "Spring Bulk",
         "day": "212",
-        "lift": "Back and Biceps"
+        "lift": "Back;Biceps"
     },
     {
         "title": "Spring Bulk Day 211 - Chest and Shoulders",
@@ -4949,7 +4957,7 @@
         "upload_date": "18-08-2023",
         "event": "Spring Bulk",
         "day": "211",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 210 - Quads",
@@ -4973,7 +4981,7 @@
         "upload_date": "15-08-2023",
         "event": "Spring Bulk",
         "day": "208",
-        "lift": "Back and Biceps"
+        "lift": "Back;Biceps"
     },
     {
         "title": "Spring Bulk Day 208 - Cardio",
@@ -5301,7 +5309,7 @@
         "upload_date": "03-07-2023",
         "event": "Spring Bulk",
         "day": "164",
-        "lift": "Triceps and Calves"
+        "lift": "Calves;Triceps"
     },
     {
         "title": "Spring Bulk Day 164 - Abs and Cardio",
@@ -5309,7 +5317,7 @@
         "upload_date": "02-07-2023",
         "event": "Spring Bulk",
         "day": "164",
-        "lift": "Abs and Cardio"
+        "lift": "Abs;Cardio"
     },
     {
         "title": "Spring Bulk Day 162 - Shoulders and Forearms",
@@ -5317,7 +5325,7 @@
         "upload_date": "01-07-2023",
         "event": "Spring Bulk",
         "day": "162",
-        "lift": "Shoulders and Forearms"
+        "lift": "Forearms;Shoulders"
     },
     {
         "title": "Spring Bulk Day 161 - Chest",
@@ -5493,7 +5501,7 @@
         "upload_date": "09-06-2023",
         "event": "Spring Bulk",
         "day": "140",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 139 - Legs",
@@ -5549,7 +5557,7 @@
         "upload_date": "01-06-2023",
         "event": "Spring Bulk",
         "day": "132",
-        "lift": "Chest, Shoulders and Calves"
+        "lift": "Calves;Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 129 - Legs",
@@ -5621,7 +5629,7 @@
         "upload_date": "19-05-2023",
         "event": "Spring Bulk",
         "day": "120",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 118 - Legs at Planet Fitness",
@@ -5869,7 +5877,7 @@
         "upload_date": "13-04-2023",
         "event": "Spring Bulk",
         "day": "84",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 83 - Legs",
@@ -5901,7 +5909,7 @@
         "upload_date": "09-04-2023",
         "event": "Spring Bulk",
         "day": "80",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 79 - Legs",
@@ -5933,7 +5941,7 @@
         "upload_date": "05-04-2023",
         "event": "Spring Bulk",
         "day": "76",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 75 - Legs",
@@ -5957,7 +5965,7 @@
         "upload_date": "03-04-2023",
         "event": "Spring Bulk",
         "day": "73",
-        "lift": "Back and Calves"
+        "lift": "Back;Calves"
     },
     {
         "title": "Spring Bulk Day 72 - Chest and Shoulders",
@@ -5965,7 +5973,7 @@
         "upload_date": "02-04-2023",
         "event": "Spring Bulk",
         "day": "72",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 71 - Legs",
@@ -5997,7 +6005,7 @@
         "upload_date": "29-03-2023",
         "event": "Spring Bulk",
         "day": "68",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 67 - Legs",
@@ -6029,7 +6037,7 @@
         "upload_date": "24-03-2023",
         "event": "Spring Bulk",
         "day": "63",
-        "lift": "Shoulders and Calves"
+        "lift": "Calves;Shoulders"
     },
     {
         "title": "Spring Bulk Day 62 - Legs",
@@ -6061,7 +6069,7 @@
         "upload_date": "18-03-2023",
         "event": "Spring Bulk",
         "day": "59",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 58 - Legs",
@@ -6093,7 +6101,7 @@
         "upload_date": "11-03-2023",
         "event": "Spring Bulk",
         "day": "54",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 53 - Legs",
@@ -6125,7 +6133,7 @@
         "upload_date": "03-03-2023",
         "event": "Spring Bulk",
         "day": "46",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 45 - Legs",
@@ -6157,7 +6165,7 @@
         "upload_date": "26-02-2023",
         "event": "Spring Bulk",
         "day": "41",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 39 - Legs",
@@ -6189,7 +6197,7 @@
         "upload_date": "21-02-2023",
         "event": "Spring Bulk",
         "day": "36",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 35 - Legs",
@@ -6245,7 +6253,7 @@
         "upload_date": "12-02-2023",
         "event": "Spring Bulk",
         "day": "26",
-        "lift": "Chest and Shoulders"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 25 - Legs",
@@ -6269,7 +6277,7 @@
         "upload_date": "08-02-2023",
         "event": "Spring Bulk",
         "day": "22",
-        "lift": "Shoulders and Chest"
+        "lift": "Chest;Shoulders"
     },
     {
         "title": "Spring Bulk Day 18 - Chest",
