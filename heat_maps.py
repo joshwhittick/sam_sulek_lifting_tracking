@@ -1,46 +1,53 @@
 import json
 import pandas as pd
-import matplotlib.pyplot as plt
-import calmap
 from datetime import datetime
+import seaborn as sns
+import matplotlib.pyplot as plt
+import streamlit as st
 
-# --- Load and Prepare Data ---
-with open('video_data_final.json', 'r') as f:
-    data = json.load(f)
+def plot_calendars(data):
+    # Convert to DataFrame
+    df = pd.DataFrame(data)
 
-df = pd.DataFrame(data)
-# Convert upload_date to datetime (assumed format: dd-mm-YYYY)
-df['date'] = pd.to_datetime(df['upload_date'], format='%d-%m-%Y', errors='coerce')
-df = df.dropna(subset=['date'])
+    # Split lifts with multiple values separated by semicolons
+    df_expanded = df[df['lift'] != 'None'].copy()
+    df_expanded['lift'] = df_expanded['lift'].str.split(';')
+    df_expanded = df_expanded.explode('lift')
 
-# --- Overall Sessions ---
-overall_series = df.groupby('date').size()
+    # Get unique lift types
+    unique_lifts = sorted(df_expanded['lift'].unique().tolist())
 
-# --- Top 7 Lifts ---
-df_valid = df[df['lift'] != 'None']
-top7_lifts = df_valid['lift'].value_counts().head(7).index.tolist()
+    lifts = []
 
-# Create a dictionary to hold the date-count series for each lift type
-lift_series = {}
-for lift in top7_lifts:
-    s = df_valid[df_valid['lift'] == lift].groupby('date').size()
-    lift_series[lift] = s
+    for lift in unique_lifts:
+        lift_df = df_expanded[df_expanded['lift'] == lift]
+        daily_counts = lift_df.groupby('upload_date').size().reset_index(name='count')
 
-# --- Plotting using calmap in Subplots ---
-# Create a figure with 4 rows and 2 columns (total 8 subplots)
-fig, axes = plt.subplots(nrows=4, ncols=2, figsize=(20, 20))
-axes = axes.flatten()
+        daily_counts['upload_date'] = pd.to_datetime(daily_counts['upload_date'], format='%d-%m-%Y', errors='coerce')
+        daily_counts = daily_counts.dropna(subset=['upload_date'])  # Optional: clean up bad dates
 
-# Plot overall sessions heatmap in the first subplot.
-plt.sca(axes[0])
-calmap.calendarplot(overall_series, fillcolor='lightgray', cmap='Greens')
-axes[0].set_title("Overall Lifting Sessions")
 
-# Plot each of the top 7 lift types in its own subplot.
-for i, lift in enumerate(top7_lifts):
-    plt.sca(axes[i + 1])
-    calmap.calendarplot(lift_series[lift], fillcolor='lightgray', cmap='Greens')
-    axes[i + 1].set_title(f"{lift} Sessions")
+        if daily_counts.empty:
+            continue
 
-plt.tight_layout()
-plt.show()
+        daily_counts['dow'] = daily_counts['upload_date'].dt.dayofweek  # Monday=0
+        daily_counts['week'] = daily_counts['upload_date'].dt.isocalendar().week
+
+        pivot = daily_counts.pivot_table(index='dow', columns='week', values='count')
+
+        plt.figure(figsize=(15, 6))
+        sns.heatmap(pivot, cmap="Greens", linewidths=0.5)
+        plt.title(f"{lift} Sessions Heatmap")
+        plt.ylabel('Day of Week')
+        plt.xlabel('ISO Week Number')
+        plt.yticks(ticks=[0, 1, 2, 3, 4, 5, 6], labels=['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], rotation=0)
+        plt.tight_layout()
+        lifts.append(plt.gcf())
+    
+    for fig in lifts:
+        st.pyplot(fig)
+
+if __name__ == "__main__":
+    file = 'video_data_final.json'
+    data = json.load(open(file, 'r'))
+    plot_calendars(data)

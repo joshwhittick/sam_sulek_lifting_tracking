@@ -5,6 +5,9 @@ import pandas as pd # type: ignore
 from analyse import clean_and_enrich_json, get_current_stats
 import matplotlib.pyplot as plt # type: ignore
 import numpy as np # type: ignore
+from datetime import datetime
+import seaborn as sns
+from heat_maps import plot_calendars
 
 file = 'video_data_final.json'
 data = json.load(open(file, 'r'))
