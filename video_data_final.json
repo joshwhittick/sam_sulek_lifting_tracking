@@ -1,5 +1,157 @@
 [
     {
+        "title": "Back with Urs Pittsburgh Pro Weekend",
+        "video_url": "https://www.youtube.com/watch?v=QEYVa3C81kk",
+        "upload_date": "11-05-2025",
+        "event": "Offseason",
+        "day": "62",
+        "lift": "Back"
+    },
+    {
+        "title": "Offseason Day 61 - Cardio",
+        "video_url": "https://www.youtube.com/watch?v=o4E4WyQbrSU",
+        "upload_date": "10-05-2025",
+        "event": "Offseason",
+        "day": "61",
+        "lift": "Cardio"
+    },
+    {
+        "title": "Offseason Day 60 - Chest",
+        "video_url": "https://www.youtube.com/watch?v=PPqLKgczNwQ",
+        "upload_date": "09-05-2025",
+        "event": "Offseason",
+        "day": "60",
+        "lift": "Chest"
+    },
+    {
+        "title": "Offseason Day 59 - Heavy Quads",
+        "video_url": "https://www.youtube.com/watch?v=seoTNsB-pmc",
+        "upload_date": "08-05-2025",
+        "event": "Offseason",
+        "day": "59",
+        "lift": "Quads"
+    },
+    {
+        "title": "Offseason Day 58 - Public Gym Arms",
+        "video_url": "https://www.youtube.com/watch?v=XmRiCfyBnTE",
+        "upload_date": "07-05-2025",
+        "event": "Offseason",
+        "day": "58",
+        "lift": "Arms"
+    },
+    {
+        "title": "Offseason Day 57 - Back",
+        "video_url": "https://www.youtube.com/watch?v=OQ6desrAfJ4",
+        "upload_date": "06-05-2025",
+        "event": "Offseason",
+        "day": "57",
+        "lift": "Back"
+    },
+    {
+        "title": "Offseason Day 56 - Chest",
+        "video_url": "https://www.youtube.com/watch?v=6vdc0vxjQlw",
+        "upload_date": "05-05-2025",
+        "event": "Offseason",
+        "day": "56",
+        "lift": "Chest"
+    },
+    {
+        "title": "Offseason Day 55 - Laying Hamathon",
+        "video_url": "https://www.youtube.com/watch?v=7I_SQFjRi_8",
+        "upload_date": "04-05-2025",
+        "event": "Offseason",
+        "day": "55",
+        "lift": "Hamstrings"
+    },
+    {
+        "title": "Offseason Day 54 - Arms",
+        "video_url": "https://www.youtube.com/watch?v=WI9YbXN6k7Q",
+        "upload_date": "03-05-2025",
+        "event": "Offseason",
+        "day": "54",
+        "lift": "Arms"
+    },
+    {
+        "title": "Offseason Day 53 - Back",
+        "video_url": "https://www.youtube.com/watch?v=5E7YTE1XsSg",
+        "upload_date": "02-05-2025",
+        "event": "Offseason",
+        "day": "53",
+        "lift": "Back"
+    },
+    {
+        "title": "Offseason Day 52 - Post Cardio Meal",
+        "video_url": "https://www.youtube.com/watch?v=1z8qybCB_Ts",
+        "upload_date": "01-05-2025",
+        "event": "Offseason",
+        "day": "52",
+        "lift": "None"
+    },
+    {
+        "title": "Offseason Day 51 - 4 Plate Smith",
+        "video_url": "https://www.youtube.com/watch?v=sMroSKSTvVQ",
+        "upload_date": "01-05-2025",
+        "event": "Offseason",
+        "day": "51",
+        "lift": "None"
+    },
+    {
+        "title": "Offseason Day 50 - Quadtastrophe",
+        "video_url": "https://www.youtube.com/watch?v=OOs34LQoQSg",
+        "upload_date": "29-04-2025",
+        "event": "Offseason",
+        "day": "50",
+        "lift": "Quads"
+    },
+    {
+        "title": "Offseason Day 49 - Arms",
+        "video_url": "https://www.youtube.com/watch?v=EGy-mMHYC4E",
+        "upload_date": "29-04-2025",
+        "event": "Offseason",
+        "day": "49",
+        "lift": "Arms"
+    },
+    {
+        "title": "Offseason Day 48 - Pumped Back Flat Tire",
+        "video_url": "https://www.youtube.com/watch?v=Ems1Pc6aNAI",
+        "upload_date": "27-04-2025",
+        "event": "Offseason",
+        "day": "48",
+        "lift": "None"
+    },
+    {
+        "title": "Offseason Day 47 - Chest Obliteration",
+        "video_url": "https://www.youtube.com/watch?v=5hPPnJi3fFk",
+        "upload_date": "26-04-2025",
+        "event": "Offseason",
+        "day": "47",
+        "lift": "Chest"
+    },
+    {
+        "title": "Offseason Day 46 - Sebastiontheli0n asks \"How cut should you be prebulk?\"",
+        "video_url": "https://www.youtube.com/watch?v=0K7YgS6F1Xk",
+        "upload_date": "25-04-2025",
+        "event": "Offseason",
+        "day": "46",
+        "lift": "None"
+    },
+    {
+        "title": "Offseason Day 45 - Bulk/Cat Update",
+        "video_url": "https://www.youtube.com/watch?v=60SRLhZhAOg",
+        "upload_date": "24-04-2025",
+        "event": "Offseason",
+        "day": "45",
+        "lift": "None"
+    },
+    {
+        "title": "Offseason Day 44 - Arms",
+        "video_url": "https://www.youtube.com/watch?v=DBOeLfSIrlY",
+        "upload_date": "24-04-2025",
+        "event": "Offseason",
+        "day": "44",
+        "lift": "Arms"
+    },
+    {
         "title": "Offseason Day 43 - Back",
         "video_url": "https://www.youtube.com/watch?v=cU6fhC6TY4I",
         "upload_date": "22-04-2025",

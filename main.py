@@ -56,7 +56,7 @@ if st.button("Get Most Recent Data"):
 
     for r in res:
         if r['video_url'] not in [d['video_url'] for d in data]:
-            st.write(f"New video(s) found: {r['title']}")
+            st.write(f"New video found: {r['title']}")
             date = get_date_for_video(r['video_url'])
             r['upload_date'] = date
             res_new.append(r)
