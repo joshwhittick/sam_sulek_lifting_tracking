@@ -1,35 +1,83 @@
 [
     {
-        "title": "Last Arm Day in Italy",
-        "video_url": "https://www.youtube.com/watch?v=f7bBU4CSZ6A",
-        "upload_date": "26-05-2025",
+        "title": "Offseason Day 82 - Heavy Chest",
+        "video_url": "https://www.youtube.com/watch?v=b7MKdh0zJgo",
+        "upload_date": "01-06-2025",
+        "event": "Offseason",
+        "day": "82",
+        "lift": "Chest"
+    },
+    {
+        "title": "Offseason Day 81 - Legs",
+        "video_url": "https://www.youtube.com/watch?v=br61_L-CMYc",
+        "upload_date": "31-05-2025",
+        "event": "Offseason",
+        "day": "81",
+        "lift": "Legs"
+    },
+    {
+        "title": "Offseason Day 80 - Private Gym Arm Pump",
+        "video_url": "https://www.youtube.com/watch?v=OEjDYk2COFo",
+        "upload_date": "30-05-2025",
+        "event": "Offseason",
+        "day": "80",
+        "lift": "Arms"
+    },
+    {
+        "title": "New Leg Equipment",
+        "video_url": "https://www.youtube.com/watch?v=HJh3cFNYsDQ",
+        "upload_date": "29-05-2025",
         "event": "None",
         "day": "None",
         "lift": "None"
+    },
+    {
+        "title": "Back at Dino's Gym Solihull",
+        "video_url": "https://www.youtube.com/watch?v=j2ZUhZhs2X4",
+        "upload_date": "28-05-2025",
+        "event": "None",
+        "day": "None",
+        "lift": "Back"
+    },
+    {
+        "title": "Chest Workout at Dino's Gym",
+        "video_url": "https://www.youtube.com/watch?v=hWqzVVX1hzg",
+        "upload_date": "27-05-2025",
+        "event": "None",
+        "day": "None",
+        "lift": "Chest"
+    },
+    {
+        "title": "Last Arm Day in Italy",
+        "video_url": "https://www.youtube.com/watch?v=f7bBU4CSZ6A",
+        "upload_date": "26-05-2025",
+        "event": "Italy",
+        "day": "6",
+        "lift": "Arms"
     },
     {
         "title": "Lat Focused Back Pump",
         "video_url": "https://www.youtube.com/watch?v=2004jjpS-6E",
         "upload_date": "25-05-2025",
-        "event": "None",
-        "day": "None",
-        "lift": "None"
+        "event": "Italy",
+        "day": "5",
+        "lift": "Back"
     },
     {
         "title": "Chest In Sienna",
         "video_url": "https://www.youtube.com/watch?v=RTKVftYwy6U",
         "upload_date": "25-05-2025",
-        "event": "None",
-        "day": "None",
-        "lift": "None"
+        "event": "Italy",
+        "day": "4",
+        "lift": "Chest"
     },
     {
         "title": "Offseason Day Something - Legs in Italy",
         "video_url": "https://www.youtube.com/watch?v=suoQkYHN4cE",
         "upload_date": "23-05-2025",
-        "event": "None",
-        "day": "None",
-        "lift": "None"
+        "event": "Italy",
+        "day": "3",
+        "lift": "Legs"
     },
     {
         "title": "Italy Day 2 - Arms",
@@ -43,8 +91,8 @@
         "title": "First Lift In Italy",
         "video_url": "https://www.youtube.com/watch?v=m-bf661VaXI",
         "upload_date": "21-05-2025",
-        "event": "None",
-        "day": "None",
+        "event": "Italy",
+        "day": "1",
         "lift": "None"
     },
     {
@@ -61,7 +109,7 @@
         "upload_date": "19-05-2025",
         "event": "Offseason",
         "day": "69",
-        "lift": "Dieting Hacks"
+        "lift": "Diet"
     },
     {
         "title": "Offseason Day 68 - Arms",
@@ -93,7 +141,7 @@
         "upload_date": "15-05-2025",
         "event": "Offseason",
         "day": "None",
-        "lift": "None"
+        "lift": "QnA"
     },
     {
         "title": "Offseason Day 65 - Heavy Chest",

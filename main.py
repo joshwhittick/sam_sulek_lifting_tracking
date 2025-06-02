@@ -12,6 +12,10 @@ from heat_maps import plot_calendars
 file = 'video_data_final.json'
 data = json.load(open(file, 'r'))
 
+standard_lifts_data = json.load(open('lift_types.json', 'r'))
+#get unique values from this dict
+unique_lifts_master = set(standard_lifts_data.values())
+
 st.set_page_config(page_title="Sam Sulek Lifting Tracking", layout="wide")
 st.title("Sam Sulek Lifting Tracking")
 channel_url = "https://www.youtube.com/channel/UCAuk798iHprjTtwlClkFxMA"
@@ -62,6 +66,21 @@ if st.button("Get Most Recent Data"):
             res_new.append(r)
 
     res_new = clean_and_enrich_json(res_new)
+
+    if len(res_new) == 0:
+        st.subheader("No new videos found! Data is already up to date.")
+
+    #print all unique "lift" values in res_new
+    unique_lifts = set()
+    for r in res_new:
+        lift = r['lift']
+        if lift not in unique_lifts_master:
+            unique_lifts.add(lift)
+
+    if len(unique_lifts) > 0:  
+        st.subheader("New non standard lift names found in new videos (consider adding them to lift_types.json to recategorise them):")
+        for lift in unique_lifts:
+            st.write(lift)
 
     res_new = res_new[::-1]
 
