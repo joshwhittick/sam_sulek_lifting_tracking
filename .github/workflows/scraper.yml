@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Decrypt cookies.txt
+        run: |
+          echo "${{ secrets.PASSPHRASE }}" | gpg --batch --yes --passphrase-fd 0 --output cookies.txt --decrypt cookies.txt.gpg
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
