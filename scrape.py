@@ -30,7 +30,7 @@ def get_date_for_video(video_url):
         'extract_flat': True,
     }
 
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    with yt_dlp.YoutubeDL({'cookiefile': 'auth/cookies.txt'}) as ydl:
         result = ydl.extract_info(video_url, download=False)
         raw_date = result.get('upload_date', '')
 
