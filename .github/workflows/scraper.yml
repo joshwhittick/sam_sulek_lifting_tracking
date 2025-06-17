@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Decrypt cookies.txt
         run: |
-          echo "${{ secrets.PASSPHRASE }}" | gpg --batch --yes --passphrase-fd 0 --output cookies.txt --decrypt cookies.txt.gpg
+          echo "${{ secrets.PASSPHRASE }}" | gpg --batch --yes --passphrase-fd 0 --output cookies.txt --decrypt auth/cookies.txt.gpg
 
       - name: Checkout repository
         uses: actions/checkout@v4
