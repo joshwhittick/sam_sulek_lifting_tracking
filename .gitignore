@@ -1,4 +1,6 @@
-OLD/*.*
+OLD/*.py
+OLD/*.txt
+OLD/*.json
 auth/cookies.txt
 .DS_Store
 .DS_Store
