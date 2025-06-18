@@ -4,3 +4,5 @@ matplotlib
 numpy
 yt-dlp
 seaborn
+google-api-python-client
+google-auth-httplib2
