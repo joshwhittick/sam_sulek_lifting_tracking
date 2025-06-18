@@ -1,73 +1,90 @@
-import os, json, datetime as dt
+import os
+import json
+import datetime as dt
 from googleapiclient.discovery import build
+from analyse import clean_and_enrich_json
 
-API_KEY      = os.environ["YT_API_KEY"]       # <-- set in GitHub Secrets
-CHANNEL_ID   = "UCAuk798iHprjTtwlClkFxMA"     # Sam Sulek
-OUTFILE      = "video_data_final.json"
-ISO_FMT_OUT  = "%d-%m-%Y"                     # keep old dd-mm-yyyy format
+# === CONFIGURATION ===
+API_KEY = os.environ["YT_API_KEY"]
+CHANNEL_ID = "UCAuk798iHprjTtwlClkFxMA"  # Sam Sulek
+OUTFILE = "video_data_final.json"
+ISO_FMT = "%d-%m-%Y"
 
+# === YouTube API Setup ===
 youtube = build("youtube", "v3", developerKey=API_KEY, cache_discovery=False)
 
-def uploads_playlist_id(channel_id: str) -> str:
-    """Fetch the hidden ‘uploads’ playlist that holds every public video."""
+def get_uploads_playlist_id(channel_id):
     res = youtube.channels().list(
-        part="contentDetails", id=channel_id, maxResults=1).execute()
+        part="contentDetails", id=channel_id, maxResults=1
+    ).execute()
     return res["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
 
-def list_uploads(playlist_id: str):
-    """Yield videoIds from the uploads playlist, 50 at a time (1 unit/call)"""
+def fetch_all_video_ids(playlist_id):
+    video_ids = []
     token = None
     while True:
         res = youtube.playlistItems().list(
-            part="contentDetails", playlistId=playlist_id,
-            maxResults=50, pageToken=token).execute()  # 1-unit :contentReference[oaicite:0]{index=0}
+            part="contentDetails",
+            playlistId=playlist_id,
+            maxResults=50,
+            pageToken=token
+        ).execute()
         for item in res["items"]:
-            yield item["contentDetails"]["videoId"]
+            video_ids.append(item["contentDetails"]["videoId"])
         token = res.get("nextPageToken")
         if not token:
             break
+    return video_ids
 
-def fetch_metadata(video_ids):
-    """Call videos.list for up to 50 IDs at once (1 unit/call)"""
-    res = youtube.videos().list(
-        part="snippet,contentDetails,statistics",
-        id=",".join(video_ids), maxResults=50).execute()  # 1-unit :contentReference[oaicite:1]{index=1}
-    return res["items"]
-
-def scrape_channel(channel_id: str):
-    pl_id = uploads_playlist_id(channel_id)
-    vids, batch = [], []
-
-    for vid in list_uploads(pl_id):
-        batch.append(vid)
-        if len(batch) == 50:          # videos.list allows up to 50 IDs
-            vids.extend(fetch_metadata(batch))
-            batch.clear()
-    if batch:
-        vids.extend(fetch_metadata(batch))
-
+def fetch_video_metadata(video_ids):
     results = []
-    for v in vids:
-        s = v["snippet"]
-        data = {
-            "video_id":   v["id"],
-            "video_url":  f"https://youtu.be/{v['id']}",
-            "title":      s["title"],
-            "upload_date": dt.datetime.fromisoformat(
-                             s["publishedAt"].replace("Z", "+00:00")
-                           ).strftime(ISO_FMT_OUT),
-            "channel_id": s["channelId"],
-            "channel_title": s["channelTitle"],
-            "description": s["description"],
-            # keep whatever extra fields you need:
-            "views": v.get("statistics", {}).get("viewCount"),
-            "duration": v["contentDetails"]["duration"],
-        }
-        results.append(data)
+    for i in range(0, len(video_ids), 50):
+        batch_ids = video_ids[i:i+50]
+        res = youtube.videos().list(
+            part="snippet",
+            id=",".join(batch_ids)
+        ).execute()
+        for item in res["items"]:
+            snippet = item["snippet"]
+            video_url = f"https://www.youtube.com/watch?v={item['id']}"
+            upload_date = dt.datetime.strptime(
+                snippet["publishedAt"], "%Y-%m-%dT%H:%M:%SZ"
+            ).strftime(ISO_FMT)
+            results.append({
+                "title": snippet["title"],
+                "video_url": video_url,
+                "upload_date": upload_date
+            })
     return results
 
-if __name__ == "__main__":
-    videos = scrape_channel(CHANNEL_ID)
-    with open(OUTFILE, "w", encoding="utf-8") as fh:
-        json.dump(videos, fh, indent=2, ensure_ascii=False)
-    print(f"Wrote {len(videos)} records → {OUTFILE}")
+# === Load Existing Data ===
+if os.path.exists(OUTFILE):
+    with open(OUTFILE, "r") as f:
+        existing_data = json.load(f)
+else:
+    existing_data = []
+
+existing_urls = {entry["video_url"] for entry in existing_data}
+
+# === Fetch New Videos from API ===
+print("Fetching new videos...")
+playlist_id = get_uploads_playlist_id(CHANNEL_ID)
+all_video_ids = fetch_all_video_ids(playlist_id)
+fetched_videos = fetch_video_metadata(all_video_ids)
+
+# === Filter Out Already Stored Videos ===
+new_videos = [v for v in fetched_videos if v["video_url"] not in existing_urls]
+
+if not new_videos:
+    print("No new videos found.")
+else:
+    print(f"{len(new_videos)} new videos found. Enriching...")
+    enriched_videos = clean_and_enrich_json(new_videos)[::-1]  # latest last
+
+    for video in enriched_videos:
+        existing_data.insert(0, video)  # prepend new videos
+
+    with open(OUTFILE, "w") as f:
+        json.dump(existing_data, f, indent=2)
+
+    print(f"{len(enriched_videos)} videos added and saved to {OUTFILE}.")
