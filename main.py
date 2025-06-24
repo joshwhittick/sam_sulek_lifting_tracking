@@ -18,6 +18,7 @@ unique_lifts_master = set(standard_lifts_data.values())
 
 st.set_page_config(page_title="Sam Sulek Lifting Tracking", layout="wide")
 st.title("Sam Sulek Lifting Tracking")
+st.write("https://www.youtube.com/@sam_sulek")
 channel_url = "https://www.youtube.com/channel/UCAuk798iHprjTtwlClkFxMA"
 
 def make_lifting_piechart(lift_ocurences):
