@@ -2,9 +2,6 @@ OLD/*.py
 OLD/*.txt
 OLD/*.json
 OLD/auth/cookies.txt.gpg
-auth/cookies.txt
 .DS_Store
-.DS_Store
-.DS_Store
-.DS_Store
-OLD/auth/cookies.txt.gpg
+OLD/*.yml
+OLD/
