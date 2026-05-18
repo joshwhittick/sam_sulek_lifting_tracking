@@ -10,8 +10,9 @@ import streamlit as st
 
 def clean_and_enrich_json(json_dict):
     new_data = []
-    regex_1 = r"^(.+?) Day (\d+) - (.+) (?=-)- (.+)"
-    regex_2 = r"^(.+?) [dD]ay (\d+)(?: Part \d)? - ([a-zA-Z \.\,\/]+)"
+    regex_1 = r"^(.+?) [dD]ay (\d+)(?: Part \d)? - (.+?) - .+"
+    regex_2 = r"^(.+?) [dD]ay (\d+)(?: Part \d)? - (.+)"
+    regex_3 = r"^(.+?) - (.+)"
 
     lifts_data = json.load(open('lift_types.json', 'r'))
     phase_dict = {
@@ -25,7 +26,8 @@ def clean_and_enrich_json(json_dict):
         'Winter Shredathon (Name TBD)': 'Winter Shredathon',
         'Winter Shredathon': 'Winter Shredathon',
         'Clothing Announcement - Winter Shredathon': 'Winter Shredathon',
-        'Spring Bulk': 'Spring Bulk'
+        'Spring Bulk': 'Spring Bulk',
+        'Cutzilla': 'Cutzilla'
     }
 
     for day in json_dict:
@@ -38,18 +40,24 @@ def clean_and_enrich_json(json_dict):
 
         match_1 = re.match(regex_1, title)
         match_2 = re.match(regex_2, title)
+        match_3 = re.match(regex_3, title)
 
         if match_1:
-            event = match_2.group(1).strip()
-            day_number = match_2.group(2).strip()
-            lift = match_2.group(3).strip()
+            event = match_1.group(1).strip()
+            day_number = match_1.group(2).strip()
+            lift = match_1.group(3).strip()
 
         elif match_2:
             event = match_2.group(1).strip()
             day_number = match_2.group(2).strip()
             lift = match_2.group(3).strip()
         
-        if match_1 or match_2:
+        elif match_3:
+            event = match_3.group(1).strip()
+            day_number = 'None'
+            lift = match_3.group(2).strip()
+        
+        if match_1 or match_2 or match_3:
 
             event = event.replace('  ', ' ')
             event = phase_dict.get(event, event)
