@@ -23,7 +23,7 @@ import logging
 import shutil
 from collections import Counter
 
-from analyse import clean_and_enrich_json, PHASE_DICT
+from analyse import clean_and_enrich_json, PHASE_DICT, VALID_EVENTS
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger("reparse")
@@ -54,27 +54,35 @@ def main():
 
     by_url_old = {x["video_url"]: x for x in original}
 
-    # Preserve manually-curated event/day. Many videos with no 'Day N' in the
-    # title had their phase assigned by hand, so we keep the original values and
-    # only (a) fill gaps where the original was 'None' and (b) normalise known
-    # phase typos/variants via PHASE_DICT (e.g. Cuzilla -> Cutzilla).
-    event_filled, event_typo_fixed = 0, 0
+    # Reconcile event/day. When the title carries a 'Day N' the parser is
+    # authoritative (it handles both title orderings and the Bulk/Diet merges via
+    # PHASE_DICT), so we take the derived event/day. When the title has no day
+    # number the value can only have been set by hand, so we preserve it - but
+    # drop stray one-off labels from the old parser that are not real phases.
+    event_remapped, event_dropped, event_normalised = 0, 0, 0
     for new in regenerated:
         old = by_url_old.get(new["video_url"], {})
         o_event, o_day = old.get("event", "None"), old.get("day", "None")
 
-        if o_event != "None":
+        if new["day"] != "None":
+            # Title-derived event/day already set on `new`; just record remaps.
+            if PHASE_DICT.get(o_event, o_event) != new["event"]:
+                event_remapped += 1
+        else:
             normalised = PHASE_DICT.get(o_event, o_event)
-            if normalised != o_event:
-                event_typo_fixed += 1
-            new["event"] = normalised
-        elif new["event"] != "None":
-            event_filled += 1  # keep newly-derived event (gap fill)
+            if o_event == "None":
+                pass  # nothing curated; leave derived (None)
+            elif normalised in VALID_EVENTS:
+                if normalised != o_event:
+                    event_normalised += 1
+                new["event"] = normalised
+            else:
+                event_dropped += 1
+                new["event"] = "None"
+            new["day"] = o_day if o_day != "None" else new["day"]
 
-        new["day"] = o_day if o_day != "None" else new["day"]
-
-    log.info("Event preserved from original; gaps filled: %d, typos normalised: %d",
-             event_filled, event_typo_fixed)
+    log.info("Event reconciled: remapped %d (day-bearing titles), normalised %d, "
+             "dropped %d non-phase labels", event_remapped, event_normalised, event_dropped)
 
     lift_changes, event_changes, day_changes = [], [], []
     gained, lost, unmatched = [], [], []

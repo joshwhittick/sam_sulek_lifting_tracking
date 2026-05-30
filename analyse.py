@@ -20,6 +20,20 @@ PHASE_DICT = {
     'Spring Bulk': 'Spring Bulk',
     'Cutzilla': 'Cutzilla',
     'Cuzilla': 'Cutzilla',  # typo fix in source titles
+    'The Bulk Awakens': 'The Bulk Awakens',
+    'Bulk': 'The Bulk Awakens',  # 'Bulk Day 10-25' continues 'The Bulk Awakens Day 1-9'
+    'Diet': 'Cutzilla',          # 'Diet Day 1' is Cutzilla day 1 (titled before the name was set)
+    'Italy': 'Italy',
+}
+
+# Recognised lifting phases. Used when validating manually-curated events on
+# videos whose title carries no 'Day N' (e.g. trip/announcement videos), so that
+# stray one-off labels from the old parser are dropped rather than shown as
+# phases. New phases that appear with day numbers are captured automatically and
+# do not need to be listed here.
+VALID_EVENTS = {
+    'Spring Bulk', 'Winter Bulk', 'Fall Cut', 'Spring Cut', 'The Bulk',
+    'Offseason', 'Winter Shredathon', 'Cutzilla', 'The Bulk Awakens', 'Italy',
 }
 
 _DAY_RE = re.compile(r'\b[Dd]ay\s+(\d+)')
