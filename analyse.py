@@ -1,95 +1,76 @@
 import json
 import re
 from datetime import datetime
-import json
-import pandas as pd
-from datetime import datetime
-import seaborn as sns
-import matplotlib.pyplot as plt
-import streamlit as st
+
+from muscle_parser import parse_title
+
+# Canonical lifting-phase names. Maps the raw phase text found in a title to its
+# canonical event. New phases not listed here are kept verbatim.
+PHASE_DICT = {
+    'Winter Bulk': 'Winter Bulk',
+    'Fall Cut': 'Fall Cut',
+    'Spring Cut': 'Spring Cut',
+    'Spring Cut Finale': 'Spring Cut',
+    'End of Fall Cut': 'Fall Cut',
+    'The Bulk': 'The Bulk',
+    'Offseason': 'Offseason',
+    'Winter Shredathon (Name TBD)': 'Winter Shredathon',
+    'Winter Shredathon': 'Winter Shredathon',
+    'Clothing Announcement - Winter Shredathon': 'Winter Shredathon',
+    'Spring Bulk': 'Spring Bulk',
+    'Cutzilla': 'Cutzilla',
+    'Cuzilla': 'Cutzilla',  # typo fix in source titles
+}
+
+_DAY_RE = re.compile(r'\b[Dd]ay\s+(\d+)')
+
+
+def parse_event_day(title):
+    """Extract (event, day) from a title.
+
+    Handles both orderings: forward 'Phase Day N - <lift>' and reversed
+    '<lift> - Phase Day N'. The event is the text segment immediately before
+    'Day N' (after the last ' - ' if present), normalised via PHASE_DICT.
+    Returns ('None', 'None') when there is no day marker.
+    """
+    m = _DAY_RE.search(title)
+    if not m:
+        return 'None', 'None'
+
+    day_number = m.group(1)
+    before = title[:m.start()].strip()
+    candidate = before.split(' - ')[-1].strip() if ' - ' in before else before
+    candidate = ' '.join(candidate.split())
+    event = PHASE_DICT.get(candidate, candidate) if candidate else 'None'
+    return event, day_number
+
 
 def clean_and_enrich_json(json_dict):
-    new_data = []
-    regex_1 = r"^(.+?) [dD]ay (\d+)(?: Part \d)? - (.+?) - .+"
-    regex_2 = r"^(.+?) [dD]ay (\d+)(?: Part \d)? - (.+)"
-    regex_3 = r"^(.+?) - (.+)"
+    """Clean titles and derive event, day, lift and muscle_group for each video.
 
-    lifts_data = json.load(open('lift_types.json', 'r'))
-    phase_dict = {
-        'Winter Bulk': 'Winter Bulk',
-        'Fall Cut': 'Fall Cut',
-        'Spring Cut': 'Spring Cut',
-        'Spring Cut Finale': 'Spring Cut',
-        'End of Fall Cut': 'Fall Cut',
-        'The Bulk': 'The Bulk',
-        'Offseason': 'Offseason',
-        'Winter Shredathon (Name TBD)': 'Winter Shredathon',
-        'Winter Shredathon': 'Winter Shredathon',
-        'Clothing Announcement - Winter Shredathon': 'Winter Shredathon',
-        'Spring Bulk': 'Spring Bulk',
-        'Cutzilla': 'Cutzilla'
-    }
+    Lifts are extracted by scanning the whole title for muscle keywords
+    (see muscle_parser), not by positional slots, so creative titles and either
+    title ordering are handled. Manual judgement calls live in
+    manual_overrides.json and are applied by parse_title.
+    """
+    new_data = []
 
     for day in json_dict:
-        title = day['title']
-        title = title.strip()
-        title = title.replace('  ', ' ')
-        title = title.replace('Arms, ', 'Arms - ')
-        title = title.replace('WI', 'Wi')
+        title = ' '.join(day['title'].split())  # strip + collapse internal whitespace
         day['title'] = title
 
-        match_1 = re.match(regex_1, title)
-        match_2 = re.match(regex_2, title)
-        match_3 = re.match(regex_3, title)
+        event, day_number = parse_event_day(title)
+        parsed = parse_title(title)
 
-        if match_1:
-            event = match_1.group(1).strip()
-            day_number = match_1.group(2).strip()
-            lift = match_1.group(3).strip()
-
-        elif match_2:
-            event = match_2.group(1).strip()
-            day_number = match_2.group(2).strip()
-            lift = match_2.group(3).strip()
-        
-        elif match_3:
-            event = match_3.group(1).strip()
-            day_number = 'None'
-            lift = match_3.group(2).strip()
-        
-        if match_1 or match_2 or match_3:
-
-            event = event.replace('  ', ' ')
-            event = phase_dict.get(event, event)
-
-            lift = lifts_data.get(lift, lift)
-            lift = lift.replace(' and ', ';')
-            lift = lift.replace(',', ';')
-            lift = lift.replace('; ', ';')
-            lift = lift.replace(' ;', ';')
-
-            lifts = lift.split(';')
-            lifts = sorted(lifts, key=lambda x: x.strip())
-            lift = ';'.join(lifts)
-
-            new_data.append({
-                'title': day['title'],
-                'video_url': day['video_url'],
-                'upload_date': day['upload_date'],
-                'event': event.strip(),
-                'day': day_number.strip(),
-                'lift': lift.strip()
-            })
-        
-        else:
-            new_data.append({
-                'title': day['title'],
-                'video_url': day['video_url'],
-                'upload_date': day['upload_date'],
-                'event': 'None',
-                'day': 'None',
-                'lift': 'None'
-            }) 
+        new_data.append({
+            'title': title,
+            'video_url': day['video_url'],
+            'upload_date': day.get('upload_date', ''),
+            'event': event,
+            'day': day_number,
+            'lift': parsed['lift'],
+            'muscle_group': parsed['muscle_group'],
+        })
 
     return new_data
 

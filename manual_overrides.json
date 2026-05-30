@@ -1,0 +1,8 @@
+{
+    "_comment": "Manual overrides applied AFTER automatic keyword extraction, keyed by exact (whitespace-normalised) video title. Use this for human judgement the keyword scanner cannot make: negation ('not a leg video'), or muscle-keyword titles that are really talk/food/holiday videos rather than training sessions. Each value sets the final 'lift' and 'muscle_group'. Use 'None' for both to force a non-lift classification. Add entries here instead of editing video_data_final.json by hand, so a re-parse never clobbers them.",
+    "overrides": {
+        "31 Days Out - Arms You Glad It's Not A Leg Video": {"lift": "Arms", "muscle_group": "Arms"},
+        "The Bulk Day 55 - Back Steak and Ramen": {"lift": "None", "muscle_group": "None"},
+        "Winter Shredathon Day 78 - Merry Chestmas Eve": {"lift": "None", "muscle_group": "None"}
+    }
+}

@@ -5,3 +5,12 @@ OLD/auth/cookies.txt.gpg
 .DS_Store
 OLD/*.yml
 OLD/
+
+# Python
+__pycache__/
+*.pyc
+
+# reparse.py working artifacts (regenerated on demand, not source)
+video_data_final.backup.json
+video_data_final.regenerated.json
+reparse_diff.md

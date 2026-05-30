@@ -12,10 +12,6 @@ from heat_maps import plot_calendars
 file = 'video_data_final.json'
 data = json.load(open(file, 'r'))
 
-standard_lifts_data = json.load(open('lift_types.json', 'r'))
-#get unique values from this dict
-unique_lifts_master = set(standard_lifts_data.values())
-
 st.set_page_config(page_title="Sam Sulek Lifting Tracking", layout="wide")
 st.title("Sam Sulek Lifting Tracking")
 st.write("https://www.youtube.com/@sam_sulek")
@@ -71,17 +67,13 @@ if st.button("Get Most Recent Data"):
     if len(res_new) == 0:
         st.subheader("No new videos found! Data is already up to date.")
 
-    #print all unique "lift" values in res_new
-    unique_lifts = set()
-    for r in res_new:
-        lift = r['lift']
-        if lift not in unique_lifts_master:
-            unique_lifts.add(lift)
+    # Flag new videos where no muscle was detected, for manual review.
+    unmatched_titles = [r['title'] for r in res_new if r['lift'] == 'None']
 
-    if len(unique_lifts) > 0:  
-        st.subheader("New non standard lift names found in new videos (consider adding them to lift_types.json to recategorise them):")
-        for lift in unique_lifts:
-            st.write(lift)
+    if len(unmatched_titles) > 0:
+        st.subheader("New videos with no muscle group detected (if one of these is a lift, add an alias to muscle_groups.json or an entry to manual_overrides.json):")
+        for t in unmatched_titles:
+            st.write(t)
 
     res_new = res_new[::-1]
 
