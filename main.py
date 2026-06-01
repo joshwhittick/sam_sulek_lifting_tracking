@@ -38,7 +38,7 @@ def make_lifting_piechart(lift_ocurences):
     ax.axis('equal')
     st.pyplot(fig)
 
-    st.subheader('Lifts that make up less than 2.5% of total sessions:')
+    st.subheader('Categories that make up less than 2.5% of the total:')
 
     col1, col2 = st.columns(2)
     col1_vals = other_lifts[:len(other_lifts)//2]
@@ -82,20 +82,20 @@ if st.button("Get Most Recent Data"):
 
     if len(res_new) != 0:
         with open(file, 'w') as f:
-            json.dump(data, f, indent=4)
+            json.dump(data, f, indent=2)  # match api_scraper.py so automated diffs stay minimal
 
     df = pd.DataFrame(data)
     st.write(df)
     st.write("Data is now up to date.")
 
 if st.button("Analyse"):
-    event_set, day_set, lift_set, event_lengths, lift_ocurences, event_start_end, overall_lift_ocurences = get_current_stats(data)
-    
-    st.subheader("Frequency of Each Lift (keeping multiple muscle group days as they are):")
-    make_lifting_piechart(lift_ocurences)
-    
-    st.subheader("Frequency of Each Lift (per muscle group i.e. duplicates removed list of muscle groups constructed and then count of each of those is done):")
-    make_lifting_piechart(overall_lift_ocurences)
+    event_set, day_set, muscle_group_set, event_lengths, combo_ocurrences, event_start_end, group_ocurrences = get_current_stats(data)
+
+    st.subheader("Frequency of muscle-group days (multi-group days kept as their own category):")
+    make_lifting_piechart(combo_ocurrences)
+
+    st.subheader("Frequency per muscle group (multi-group days split, counting once toward each group):")
+    make_lifting_piechart(group_ocurrences)
 
     st.subheader('Event Durations:')
     for event, length in event_lengths.items():

@@ -89,10 +89,20 @@ def clean_and_enrich_json(json_dict):
     return new_data
 
 def get_current_stats(new_data):
+    """Aggregate stats off the rolled-up muscle_group field.
+
+    Two occurrence views are produced:
+      combo_ocurrences  - count per exact muscle_group string, so multi-group
+                          days (e.g. 'Chest;Shoulders') are their own category.
+      group_ocurrences  - per individual major group, so a multi-group day
+                          counts once toward each group it touches.
+    The detailed `lift` field is no longer charted; muscle_group rolls its long
+    tail of combos up into the major groups (Arms, Back, Chest, Legs, ...).
+    """
     event_set = set()
     day_set = set()
-    lift_set = set()
-    overall_lift_set = set()
+    muscle_group_set = set()   # distinct exact muscle_group strings (combos kept)
+    major_group_set = set()    # distinct individual major groups
 
     event_dates = {}
 
@@ -101,11 +111,10 @@ def get_current_stats(new_data):
             day_set.add(day['day'])
         if day['event'] != 'None':
             event_set.add(day['event'])
-        if day['lift'] != 'None':
-            lift_set.add(day['lift'])
-            lifts = day['lift'].split(';')
-            for lift in lifts:
-                overall_lift_set.add(lift.strip())
+        if day['muscle_group'] != 'None':
+            muscle_group_set.add(day['muscle_group'])
+            for group in day['muscle_group'].split(';'):
+                major_group_set.add(group.strip())
 
         if day['event'] != 'None':
             date_str = day['upload_date']
@@ -118,21 +127,16 @@ def get_current_stats(new_data):
                 event_dates[day['event']] = []
             event_dates[day['event']].append(date)
 
-    # Sort alphabetically
-    overall_lift_set = sorted(overall_lift_set)
-
-    overall_lift_ocurences = {}
-    for lift in overall_lift_set:
-        count = 0
-        for x in new_data:
-            if lift in x['lift']:
-                count += 1
-        overall_lift_ocurences[lift] = count
-
+    # Per individual major group: a multi-group day counts toward each group.
+    group_ocurrences = {}
+    for group in sorted(major_group_set):
+        group_ocurrences[group] = sum(
+            1 for x in new_data
+            if x['muscle_group'] != 'None' and group in x['muscle_group'].split(';')
+        )
 
     event_set = sorted(event_set)
     day_set = sorted(day_set)
-    lift_set = sorted(lift_set)
 
     event_lengths = {}
     event_start_end = {}
@@ -153,17 +157,13 @@ def get_current_stats(new_data):
             sorted_dates = sorted(event_dates[event])
             event_start_end[event] = (sorted_dates[0], sorted_dates[-1])
 
-    lift_ocurences = {}
-    for lift in lift_set:
-        count = 0
-        for x in new_data:
-            if x['lift'] == lift:
-                count += 1
-        lift_ocurences[lift] = count
+    # Exact muscle_group combo string: multi-group days kept as their own category.
+    combo_ocurrences = {}
+    for mg in sorted(muscle_group_set):
+        combo_ocurrences[mg] = sum(1 for x in new_data if x['muscle_group'] == mg)
 
-    lift_ocurences = dict(sorted(lift_ocurences.items(), key=lambda item: item[1], reverse=True))
+    combo_ocurrences = dict(sorted(combo_ocurrences.items(), key=lambda item: item[1], reverse=True))
+    group_ocurrences = dict(sorted(group_ocurrences.items(), key=lambda item: item[1], reverse=True))
     event_lengths = dict(sorted(event_lengths.items(), key=lambda item: item[1], reverse=True))
 
-
-
-    return event_set, day_set, lift_set, event_lengths, lift_ocurences, event_start_end, overall_lift_ocurences
+    return event_set, day_set, muscle_group_set, event_lengths, combo_ocurrences, event_start_end, group_ocurrences
