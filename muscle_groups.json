@@ -19,7 +19,6 @@
         "Calves": ["calves", "\\bcalf\\b", "\\bcalve\\b", "calf raise"],
         "Adductors": ["adductors?", "abductors?"],
         "Abs": ["\\babs?\\b", "ab day", "core day"],
-        "Cardio": ["cardio\\w*", "stairmaster", "treadmill", "incline walk", "\\bbike\\b", "seated bike"]
     },
     "rollup": {
         "Chest": "Chest",
@@ -39,8 +38,7 @@
         "Glutes": "Legs",
         "Calves": "Legs",
         "Adductors": "Legs",
-        "Abs": "Core",
-        "Cardio": "Cardio"
+        "Abs": "Core"
     },
     "back_returning_context": [
         "back home",
