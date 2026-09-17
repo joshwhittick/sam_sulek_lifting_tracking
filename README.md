@@ -22,7 +22,7 @@ Live app: <https://samsulekliftingtracking.streamlit.app/>
 | `video_data_final.json` | The dataset. One record per video (schema below). Committed. |
 | `requirements.txt` | Python dependencies. |
 | `.github/workflows/api_scraper.yml` | Daily cron (06:00 UTC) + manual dispatch. Runs `api_scraper.py`, commits and pushes `video_data_final.json`. |
-| `folder_structure.md` | Hand-written file tree (currently stale - see TODOs). |
+| `folder_structure.md` | Hand-written file tree of the repo. |
 
 ## How to run
 
@@ -81,7 +81,8 @@ The daily ingestion needs no manual step - the GitHub Action runs `api_scraper.p
 
 ## Status
 
-- Last shipped: 2026-06-01 - Streamlit pie charts now key off the `muscle_group` rollup (two views: exact major-group combos, and per-group split) instead of the long tail of detailed `lift` combos; `main.py` JSON save aligned to `indent=2` to match `api_scraper.py`.
+- Last shipped: 2026-09-17 - Removed Cardio as a tracked exercise: dropped from `muscle_groups.json` (patterns + rollup), stripped from `lift`/`muscle_group` across `video_data_final.json` (emptied fields use the string `"None"`), orphaned `lift_types.json` deleted, `folder_structure.md` refreshed.
+- Previously: 2026-06-01 - Streamlit pie charts now key off the `muscle_group` rollup (two views: exact major-group combos, and per-group split) instead of the long tail of detailed `lift` combos; `main.py` JSON save aligned to `indent=2` to match `api_scraper.py`.
 - TODO:
   - Add a `LICENSE` file or drop the licence claim (README previously pointed at a non-existent file).
   - Document or remove `scrape.py`'s `cookies.txt` dependency (file is not in the repo).
