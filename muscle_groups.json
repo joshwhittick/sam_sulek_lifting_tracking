@@ -18,7 +18,7 @@
         "Glutes": ["glute\\w*"],
         "Calves": ["calves", "\\bcalf\\b", "\\bcalve\\b", "calf raise"],
         "Adductors": ["adductors?", "abductors?"],
-        "Abs": ["\\babs?\\b", "ab day", "core day"],
+        "Abs": ["\\babs?\\b", "ab day", "core day"]
     },
     "rollup": {
         "Chest": "Chest",

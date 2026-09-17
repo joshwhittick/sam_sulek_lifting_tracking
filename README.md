@@ -19,7 +19,6 @@ Live app: <https://samsulekliftingtracking.streamlit.app/>
 | `reparse.py` | Non-destructive full re-parse of the dataset. Writes backup, regenerated and diff files; never overwrites the live data (see How to run). |
 | `muscle_groups.json` | Parser config: `muscles` (alias regexes per muscle), `rollup` (detailed → major group), `back_returning_context` (phrases where "back" means "returning"). |
 | `manual_overrides.json` | Per-title manual `lift`/`muscle_group` overrides, keyed by whitespace-normalised title. Takes precedence over the keyword scan. |
-| `lift_types.json` | **Orphaned** - not referenced by any current code (see TODOs). |
 | `video_data_final.json` | The dataset. One record per video (schema below). Committed. |
 | `requirements.txt` | Python dependencies. |
 | `.github/workflows/api_scraper.yml` | Daily cron (06:00 UTC) + manual dispatch. Runs `api_scraper.py`, commits and pushes `video_data_final.json`. |
@@ -71,7 +70,7 @@ The daily ingestion needs no manual step - the GitHub Action runs `api_scraper.p
   ```
 
   - `lift` - detailed `;`-joined muscles (e.g. `Chest;Side Delts`), or `None`.
-  - `muscle_group` - major-group rollup (`Arms`, `Back`, `Chest`, `Legs`, `Shoulders`, `Core`, `Cardio`), or `None`. The app's pie charts key off this; `heat_maps.py` still uses detailed `lift`.
+  - `muscle_group` - major-group rollup (`Arms`, `Back`, `Chest`, `Legs`, `Shoulders`, `Core`), or `None`. The app's pie charts key off this; `heat_maps.py` still uses detailed `lift`.
 - `reparse.py` artifacts (gitignored): `video_data_final.backup.json`, `video_data_final.regenerated.json`, `reparse_diff.md`.
 
 ## Dependencies
@@ -84,8 +83,6 @@ The daily ingestion needs no manual step - the GitHub Action runs `api_scraper.p
 
 - Last shipped: 2026-06-01 - Streamlit pie charts now key off the `muscle_group` rollup (two views: exact major-group combos, and per-group split) instead of the long tail of detailed `lift` combos; `main.py` JSON save aligned to `indent=2` to match `api_scraper.py`.
 - TODO:
-  - Remove orphaned `lift_types.json` (no code references it).
-  - Update `folder_structure.md` (lists `lift_types.json`, omits `api_scraper.py`, `muscle_parser.py`, `muscle_groups.json`, `manual_overrides.json`, `reparse.py`).
   - Add a `LICENSE` file or drop the licence claim (README previously pointed at a non-existent file).
   - Document or remove `scrape.py`'s `cookies.txt` dependency (file is not in the repo).
 
